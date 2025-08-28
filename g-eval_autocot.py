@@ -19,6 +19,7 @@ import time
 import argparse
 import requests
 from typing import Dict, Any, List, Optional
+import csv
 
 # ===================== 可調整區 =====================
 # Ollama 連線與模型設定
@@ -389,8 +390,53 @@ def main():
             print(json.dumps(detailed_results, ensure_ascii=False, indent=2))
 
     # 存成列表，包含多次的結果
-    with open("geval_results.json", "w", encoding="utf-8") as f:
-        json.dump(all_runs, f, ensure_ascii=False, indent=2)
+    with open("geval_results.csv", "w", newline="", encoding="utf-8-sig") as f:
+        writer = csv.writer(f)
+
+        # 先寫標題列
+        writer.writerow([
+            "run",
+            "model",
+            "helpfulness",
+            "conciseness",
+            "correctness",
+            "relevance",
+            "clarity",
+            "completeness",
+            "faithfulness",
+            "overall_rating",
+            "differences",
+            "assessment",
+            "winner"
+        ])
+
+        for run in all_runs:
+            run_idx = run["run"]
+            results = run["results"]
+
+            # multi-model 模式
+            if "multi_model" in results:
+                winner = results["multi_model"].get("winner", "")
+                writer.writerow([run_idx, "multi_model", "", "", "", "", "", "", "", "", "", "", winner])
+            else:
+                # 單模型模式
+                for mname, out in results.items():
+                    per = out.get("per_criterion", {})
+                    writer.writerow([
+                        run_idx,
+                        mname,
+                        per.get("helpfulness", ""),
+                        per.get("conciseness", ""),
+                        per.get("correctness", ""),
+                        per.get("relevance", ""),
+                        per.get("clarity", ""),
+                        per.get("completeness", ""),
+                        per.get("faithfulness", ""),
+                        out.get("overall_rating", ""),
+                        out.get("differences", "").replace("\n", " "),
+                        out.get("assessment", "").replace("\n", " "),
+                        ""
+                    ])
 
 if __name__ == "__main__":
     main()
