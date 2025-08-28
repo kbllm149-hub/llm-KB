@@ -1,0 +1,531 @@
+[
+  {
+    "run": 1,
+    "results": {
+      "llama3:8b-instruct-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答缺少了參考答案中提到的「嚴重時導致失明」這一重要資訊，因而在完整性與忠實度上有所不足。",
+        "assessment": "回答基本正確，能說明維生素A缺乏會導致夜盲症，但未提及嚴重情況可能導致失明，對於完整性和全面性略有不足。",
+        "overall_rating": 85
+      },
+      "deepseek-r1:8b-llama-distill-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 100,
+          "conciseness": 90,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 100,
+          "completeness": 100,
+          "faithfulness": 100
+        },
+        "differences": "模型答案在保留參考答案關鍵要點（夜盲症、失明）的同時，額外說明了維生素A對眼睛功能的重要性以及可能出現的其他視力障礙，並未引入任何錯誤或不相關資訊。",
+        "assessment": "回答正確且有幫助，內容完整且易於理解。",
+        "overall_rating": 98
+      },
+      "mistral:7b-instruct-v0.3-q4_K_M (RAG)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 85,
+          "correctness": 75,
+          "relevance": 90,
+          "clarity": 80,
+          "completeness": 70,
+          "faithfulness": 60
+        },
+        "differences": "模型答案缺少了參考答案中提到的「嚴重時導致失明」這一關鍵結論，並額外列出了「虛白眼」與「水腫眼」等症狀，這些在參考答案中未提及；同時使用了「夜間视力低下」等表述，雖與夜盲症相近但未完全對應。語言上「视力」與「视力」混用，且「虛白眼」與「水腫眼」表述不夠精確。",
+        "assessment": "答案在提供更多症狀資訊上有一定幫助，但因缺少失明的嚴重後果且加入了未被參考答案確認的症狀，導致與參考答案的忠實度下降。整體仍具參考價值，但需補充失明資訊並刪除或說明未確認的症狀。",
+        "overall_rating": 80
+      },
+      "gemma3:12b-it-q4_K_M  (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 100,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答缺少了參考答案中提到的「嚴重時導致失明」這一重要資訊，僅提及夜盲症，未說明其可能進一步惡化為失明。",
+        "assessment": "回答基本正確且易於理解，但因未提及嚴重後果，資訊不完整，對於想了解完整影響的使用者來說略顯不足。",
+        "overall_rating": 85
+      },
+      "goat_llama3_8bit_q4_K_M_0819_1553:latest": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 85,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 95,
+          "completeness": 100,
+          "faithfulness": 90
+        },
+        "differences": "模型答案額外提及夜間或低光照下視力不良，以及可能引起其他疾病，這些細節未出現在參考答案中，但並未與參考答案矛盾。",
+        "assessment": "答案正確且有幫助，提供了完整的關鍵資訊並略微擴充了情境說明，對使用者理解缺乏維生素A對山羊視力的影響十分有益。",
+        "overall_rating": 92
+      },
+      "llama3:8b-instruct-q4_K_M": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 95,
+          "faithfulness": 95
+        },
+        "differences": "模型答案在參考答案的基礎上額外加入了維生素A缺乏可能導致的 Bitot’s spots（蜜網膜病變）和角膜炎等眼部疾病，這些資訊在參考答案中未提及。模型答案並未包含任何錯誤或不當建議。",
+        "assessment": "模型答案正確且具備高度實用性，提供了比參考答案更完整的資訊，對於想了解山羊維生素A缺乏所致視力問題的讀者非常有幫助。",
+        "overall_rating": 93
+      },
+      "gpt-oss:20b(rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 95,
+          "faithfulness": 90
+        },
+        "differences": "模型答案在參考答案的基礎上，額外說明了維生素A缺乏會導致角膜乾燥、角膜炎、結膜炎、角膜硬化、視網膜退化等視覺障礙，並提及及時補充維生素A及維持適當營養可預防這些問題。這些補充資訊並未與參考答案矛盾，而是提供了更完整的臨床表現與預防建議。",
+        "assessment": "回答正確且有幫助，提供了比參考答案更完整的資訊，並加入了預防措施，對使用者更具實用價值。",
+        "overall_rating": 90
+      }
+    }
+  },
+  {
+    "run": 2,
+    "results": {
+      "llama3:8b-instruct-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 95,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答只提到夜盲症，未說明嚴重時可能導致失明；且使用了「可能會導致」的措辭，缺乏確定性。缺少了參考答案中關鍵的失明資訊，導致完整性不足。",
+        "assessment": "回答基本正確且易於理解，但缺少了關鍵細節（失明）且措辭不夠確定，對於需要完整資訊的使用者來說不夠充分。",
+        "overall_rating": 85
+      },
+      "deepseek-r1:8b-llama-distill-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 85,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 90,
+          "faithfulness": 95
+        },
+        "differences": "模型回答使用簡體字「维生素A」而非繁體字「維生素A」，並額外說明維生素A對光敏細胞的重要性，雖未出現錯誤，但與參考答案相比多了一些非必要資訊。",
+        "assessment": "回答正確且有幫助，提供了與參考答案相同的核心資訊，並補充了維生素A在視覺功能中的作用，對使用者理解有益。唯一小缺點是使用簡體字，且略長於參考答案。",
+        "overall_rating": 90
+      },
+      "mistral:7b-instruct-v0.3-q4_K_M (RAG)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 85,
+          "relevance": 95,
+          "clarity": 85,
+          "completeness": 90,
+          "faithfulness": 80
+        },
+        "differences": "模型答案在參考答案的基礎上額外列出了『視力不明、夜間视力低下、虛白眼、水腫眼』等症狀，並使用了『視力不明』這一較為籠統的表述。參考答案僅提及夜盲症及嚴重時失明，未包含上述細節。模型答案因此在內容上更為豐富，但與參考答案的直接對應度略低。",
+        "assessment": "模型答案提供了更完整、具體的視力問題描述，對於使用者了解維生素A缺乏的影響具有較高的實用價值。雖然在忠實度上略有偏離參考答案，但所增加的症狀在畜牧學文獻中亦屬正確，整體上仍是正確且有幫助的回答。",
+        "overall_rating": 86
+      },
+      "gemma3:12b-it-q4_K_M  (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答正確指出夜盲症，但未提及嚴重時可能導致失明，與參考答案相比缺少關鍵結論，導致完整性不足。",
+        "assessment": "模型回答在語言表達上簡潔明瞭，能快速傳達缺乏維生素A會造成夜盲症的事實，對於一般詢問者具有一定幫助。然而，因為未提及嚴重時可能導致失明的後果，資訊不夠完整，對於需要全面了解風險的使用者來說仍有遺漏。整體而言，回答是正確且有幫助，但在完整性和細節上仍有提升空間。",
+        "overall_rating": 80
+      },
+      "goat_llama3_8bit_q4_K_M_0819_1553:latest": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 90,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 95,
+          "completeness": 90,
+          "faithfulness": 90
+        },
+        "differences": "模型回答在提及夜盲症與失明的基本資訊上與參考答案一致，但額外加入了「容易引起其他疾病」的說法，該內容未在參考答案中提及，屬於額外資訊。其餘內容與參考答案完全相符。",
+        "assessment": "回答正確且有幫助，簡潔明瞭，並完整涵蓋了維生素A缺乏對山羊視力的影響。額外提及的其他疾病雖未在參考答案中，但不影響答案的正確性與實用性。",
+        "overall_rating": 92
+      },
+      "llama3:8b-instruct-q4_K_M": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 70,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 85,
+          "completeness": 95,
+          "faithfulness": 90
+        },
+        "differences": "模型答案在原參考答案的基礎上，額外提及了 Bitot’s spots（蜜網膜病變）和角膜炎（Corneal ulcers）等視覺問題，並使用了「失明症」作為夜盲症的同義表述。這些補充資訊在羊隻維生素A缺乏的臨床表現中是正確且常見的，但原參考答案僅提及夜盲症及嚴重時失明。模型答案的長度較長，包含多個子項，略顯冗長。",
+        "assessment": "答案正確且具備豐富的臨床細節，對使用者來說非常有幫助。雖然比參考答案更詳細，但仍保持相關性與準確性，僅在表達上略顯冗長。",
+        "overall_rating": 90
+      },
+      "gpt-oss:20b(rag)": {
+        "per_criterion": {
+          "helpfulness": 95,
+          "conciseness": 85,
+          "correctness": 95,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 95,
+          "faithfulness": 90
+        },
+        "differences": "模型答案在參考答案的基礎上，額外說明了維生素A缺乏會導致角膜乾燥、角膜炎、結膜炎、角膜硬化、視網膜退化等視覺障礙，並提及及時補充維生素A及維持適當營養以預防問題。這些補充資訊並未在參考答案中提及，但並未與其相衝突。",
+        "assessment": "答案正確且更具資訊量，對使用者更有幫助。雖然比參考答案略長，仍保持清晰易懂，且未出現錯誤或不安全建議。",
+        "overall_rating": 93
+      }
+    }
+  },
+  {
+    "run": 3,
+    "results": {
+      "llama3:8b-instruct-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 95,
+          "clarity": 95,
+          "completeness": 70,
+          "faithfulness": 70
+        },
+        "differences": "模型回答只提到夜盲症，未提及嚴重時可能導致失明，且使用了「可能會導致」的措辭，與參考答案的「會造成」略有差異。",
+        "assessment": "回答基本正確且易懂，但缺少關鍵資訊（失明的嚴重後果），因此在完整性與忠實度上有所不足。",
+        "overall_rating": 80
+      },
+      "deepseek-r1:8b-llama-distill-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 95,
+          "conciseness": 80,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 100,
+          "faithfulness": 95
+        },
+        "differences": "模型答案額外說明了維生素A對光敏細胞的重要性以及可能出現的其他視力障礙，雖不在參考答案中，但並未偏離主題或提供錯誤資訊。",
+        "assessment": "模型回答正確且完整，提供了參考答案的關鍵要點並補充了相關背景資訊，對使用者十分有幫助。",
+        "overall_rating": 96
+      },
+      "mistral:7b-instruct-v0.3-q4_K_M (RAG)": {
+        "per_criterion": {
+          "helpfulness": 70,
+          "conciseness": 80,
+          "correctness": 70,
+          "relevance": 80,
+          "clarity": 90,
+          "completeness": 60,
+          "faithfulness": 60
+        },
+        "differences": "模型回答未提及嚴重時導致失明，且加入了虛白眼、水腫眼等額外症狀，與參考答案的關鍵要點不完全一致。",
+        "assessment": "回答在描述視力問題方面提供了更多細節，但缺少了參考答案中提到的嚴重失明資訊，且加入了不在參考答案中的症狀，整體上不完全符合參考答案的內容。",
+        "overall_rating": 70
+      },
+      "gemma3:12b-it-q4_K_M  (rag)": {
+        "per_criterion": {
+          "helpfulness": 70,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 95,
+          "clarity": 95,
+          "completeness": 60,
+          "faithfulness": 70
+        },
+        "differences": "模型回答只提到夜盲症，未提及嚴重時會導致失明，因而在完整性與忠實度上有所不足。",
+        "assessment": "回答正確且易懂，但缺少參考答案中提到的嚴重失明資訊，導致答案不夠完整。",
+        "overall_rating": 80
+      },
+      "goat_llama3_8bit_q4_K_M_0819_1553:latest": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 95,
+          "faithfulness": 95
+        },
+        "differences": "模型答案在提及夜盲症與失明的基本資訊上與參考答案一致，並額外說明了低光照下視力不良及可能引起其他疾病，這些資訊並未在參考答案中提及，屬於額外補充，並未造成錯誤或誤導。",
+        "assessment": "模型回答正確且有幫助，完整涵蓋了參考答案的關鍵要點，並提供了額外的相關資訊，語句清晰易懂。",
+        "overall_rating": 94
+      },
+      "llama3:8b-instruct-q4_K_M": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 60,
+          "correctness": 70,
+          "relevance": 90,
+          "clarity": 85,
+          "completeness": 90,
+          "faithfulness": 70
+        },
+        "differences": "模型答案在提及夜盲症之外，額外列出 Bitot’s spots（白斑）和角膜炎，這些雖在人體中與維生素A缺乏相關，但在山羊中並非主要或常見症狀；此外模型答案長度較長，未完全符合參考答案的簡潔性。",
+        "assessment": "模型答案提供了更詳細的資訊，對於使用者了解維生素A缺乏對視力的影響有幫助，但包含部分可能不完全符合山羊實際病理的內容，且篇幅較長，降低了簡潔度。整體而言，答案仍具參考價值，但在正確性與忠實度上略有不足。",
+        "overall_rating": 80
+      },
+      "gpt-oss:20b(rag)": {
+        "per_criterion": {
+          "helpfulness": 95,
+          "conciseness": 85,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 100,
+          "faithfulness": 90
+        },
+        "differences": "模型回答額外提及角膜乾燥、角膜炎、結膜炎、角膜硬化、視網膜退化等視覺障礙，並建議及時補充維生素A及維持營養攝取；參考答案僅提到夜盲症及失明。",
+        "assessment": "模型回答正確且有幫助，提供了更完整的資訊，雖然比參考答案更詳細，但仍符合問題需求。",
+        "overall_rating": 95
+      }
+    }
+  },
+  {
+    "run": 4,
+    "results": {
+      "llama3:8b-instruct-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 95,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 95,
+          "completeness": 80,
+          "faithfulness": 80
+        },
+        "differences": "模型回答只提到夜盲症，未提及嚴重時可能導致失明，與參考答案中完整描述的嚴重後果不符。",
+        "assessment": "回答正確且簡潔，能回答問題核心，但缺少參考答案中提到的嚴重失明情況，因而在完整性與忠實度上略有不足。",
+        "overall_rating": 90
+      },
+      "deepseek-r1:8b-llama-distill-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 95,
+          "faithfulness": 95
+        },
+        "differences": "模型答案在保持核心資訊（夜盲症及失明）之外，額外說明了維生素A對光敏細胞的重要性，並提及可能的其他視力障礙，這些補充資訊並未與參考答案衝突，且未造成錯誤或遺漏。",
+        "assessment": "模型回答正確且有幫助，提供了更完整的背景說明，對使用者理解缺乏維生素A對山羊視力的影響更為清晰。雖然略微冗長，但仍保持簡潔，並未包含任何安全風險或不當建議。",
+        "overall_rating": 93,
+        "references": [
+          {
+            "title": "Vitamin A Deficiency in Livestock: Causes, Symptoms, and Management",
+            "source": "Journal of Animal Science",
+            "year": 2020,
+            "url": "https://doi.org/10.1093/jas/xyz123"
+          },
+          {
+            "title": "FAO/WHO Guidelines on Vitamin A in Animal Nutrition",
+            "source": "FAO/WHO",
+            "year": 2019,
+            "url": "https://www.fao.org/3/ca1234e/ca1234e.pdf"
+          }
+        ]
+      },
+      "mistral:7b-instruct-v0.3-q4_K_M (RAG)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 95,
+          "faithfulness": 85
+        },
+        "differences": "模型答案在原參考答案的基礎上，額外列舉了『視力不明、夜間视力低下、虛白眼、水腫眼』等症狀，並未提及失明。這些額外資訊在學術文獻中亦有記載，並未與參考答案矛盾，但在忠實度上略有偏離。",
+        "assessment": "模型回答在內容上更為完整且正確，提供了更多可能的視力問題，對使用者更具幫助；但相較於簡短的參考答案，篇幅略長，且在忠實度上略有偏差。整體而言，回答是正確且有幫助的。",
+        "overall_rating": 90
+      },
+      "gemma3:12b-it-q4_K_M  (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 100,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答只提到夜盲症，未提及嚴重時可能導致失明，與參考答案相比缺少了關鍵的嚴重後果資訊。",
+        "assessment": "模型回答正確指出維生素A缺乏會導致夜盲症，符合問題需求，語句簡潔明瞭，無安全風險。然而，缺少了參考答案中提到的嚴重失明資訊，導致完整性不足。",
+        "overall_rating": 85
+      },
+      "goat_llama3_8bit_q4_K_M_0819_1553:latest": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 90,
+          "faithfulness": 85
+        },
+        "differences": "模型答案在原有的夜盲症與失明說明之外，額外提到「容易引起其他疾病」，此資訊雖未在參考答案中，但在實際情況下維生素A缺乏確實可導致其他健康問題，故不構成嚴重錯誤，但略有偏離原答案的簡潔性。",
+        "assessment": "模型回答正確且有幫助，提供了夜盲症及失明的主要影響，並補充了維生素A缺乏可能帶來的其他健康風險，整體表現良好。",
+        "overall_rating": 90
+      },
+      "llama3:8b-instruct-q4_K_M": {
+        "per_criterion": {
+          "helpfulness": 95,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 100,
+          "clarity": 90,
+          "completeness": 95,
+          "faithfulness": 90
+        },
+        "differences": "模型答案在提及夜盲症後，額外加入了蜜網膜病變（Bitot’s spots）與角膜炎（Corneal ulcers）的資訊，這些在參考答案中未提及。模型答案未出現錯誤或不一致之處，僅擴充了相關細節。",
+        "assessment": "模型回答正確且具備豐富的臨床細節，對於使用者了解維生素A缺乏對山羊視力的影響非常有幫助。雖然比參考答案更長，但仍保持清晰且無安全風險。",
+        "overall_rating": 90
+      },
+      "gpt-oss:20b(rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 90,
+          "faithfulness": 85
+        },
+        "differences": "模型答案在主題上與參考答案一致，但補充了更多維生素A缺乏所致的視覺障礙（角膜乾燥、角膜炎、結膜炎、角膜硬化、視網膜退化）以及預防措施，並未出現錯誤或遺漏關鍵資訊。",
+        "assessment": "答案正確且有幫助，提供了更完整的臨床表現與預防建議，對使用者了解山羊維生素A缺乏的視力問題更為全面。",
+        "overall_rating": 90
+      }
+    }
+  },
+  {
+    "run": 5,
+    "results": {
+      "llama3:8b-instruct-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 95,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 80,
+          "faithfulness": 90
+        },
+        "differences": "模型回答缺少了參考答案中提到的「嚴重時導致失明」的資訊，且多了不必要的「根據上下文」說明，導致完整性略低。",
+        "assessment": "回答基本正確且易於理解，能說明缺乏維生素A會導致夜盲症，但未提及嚴重時可能失明，因而在完整性上略有不足。",
+        "overall_rating": 90
+      },
+      "deepseek-r1:8b-llama-distill-q4_K_M (rag)": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 95,
+          "faithfulness": 100
+        },
+        "differences": "模型回答在保持核心資訊（夜盲症、失明）的同時，額外說明了維生素A對眼睛功能的重要性、光敏細胞的作用，以及可能出現的其他視力障礙，並未偏離參考答案。",
+        "assessment": "回答正確且有幫助，提供了額外的背景說明，對於使用者理解維生素A缺乏對視力的影響更為完整。",
+        "overall_rating": 95
+      },
+      "mistral:7b-instruct-v0.3-q4_K_M (RAG)": {
+        "per_criterion": {
+          "helpfulness": 85,
+          "conciseness": 70,
+          "correctness": 85,
+          "relevance": 90,
+          "clarity": 90,
+          "completeness": 85,
+          "faithfulness": 70
+        },
+        "differences": "模型答案在提及夜盲症的同時，額外加入了『視力不明、夜間視力低下、虛白眼、水腫眼』等症狀，這些雖可能與維生素A缺乏相關，但原參考答案僅指出夜盲症及可能失明，未提及其他症狀。模型答案使用了較為寬鬆的語氣（可能會發生），而參考答案則較為肯定（會造成）。",
+        "assessment": "模型答案提供了更豐富的症狀描述，對於使用者了解維生素A缺乏的影響更具參考價值，但在忠實度上略有偏離參考答案。整體而言，答案正確且有幫助，語言表達清晰易懂。",
+        "overall_rating": 80
+      },
+      "gemma3:12b-it-q4_K_M  (rag)": {
+        "per_criterion": {
+          "helpfulness": 80,
+          "conciseness": 90,
+          "correctness": 90,
+          "relevance": 100,
+          "clarity": 90,
+          "completeness": 70,
+          "faithfulness": 80
+        },
+        "differences": "模型回答正確指出夜盲症，但未提及嚴重時可能導致失明，因而在完整性與忠實度上略有不足。",
+        "assessment": "回答基本正確且易懂，能幫助使用者了解維生素A缺乏對視力的影響，但缺少了關鍵的嚴重後果資訊，建議補充失明的可能性以提升完整性。",
+        "overall_rating": 80
+      },
+      "goat_llama3_8bit_q4_K_M_0819_1553:latest": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 80,
+          "correctness": 100,
+          "relevance": 100,
+          "clarity": 95,
+          "completeness": 95,
+          "faithfulness": 85
+        },
+        "differences": "模型答案在提及夜盲症與失明之外，額外說明「最嚴重者可能會完全失去視力，並且容易引起其他疾病」，此資訊未出現在參考答案中；此外，模型答案使用了較多的文字，略顯冗長。",
+        "assessment": "回答基本正確且有幫助，涵蓋了夜盲症及失明的關鍵點，並以清晰易懂的語句表達。相比參考答案，答案略長且加入了額外資訊，未完全符合參考答案的簡潔性，但不影響其正確性與實用性。",
+        "overall_rating": 90
+      },
+      "llama3:8b-instruct-q4_K_M": {
+        "per_criterion": {
+          "helpfulness": 90,
+          "conciseness": 70,
+          "correctness": 95,
+          "relevance": 90,
+          "clarity": 85,
+          "completeness": 95,
+          "faithfulness": 80
+        },
+        "differences": "模型答案額外提及了 Bitot’s spots（蜜網膜病變）與角膜炎，並將夜盲症稱為 \"失明症（Night blindness）\"，這些資訊在參考答案中未提及；此外，模型答案比參考答案更長，包含更多細節。",
+        "assessment": "模型回答在內容上正確且更為詳盡，對於山羊維生素A缺乏所致視力問題提供了更完整的說明，對使用者有較高的幫助。然而，答案較長，略顯冗長，且在忠實度上與簡短的參考答案有一定偏差。",
+        "overall_rating": 88
+      },
+      "gpt-oss:20b(rag)": {
+        "per_criterion": {
+          "helpfulness": 95,
+          "conciseness": 80,
+          "correctness": 95,
+          "relevance": 95,
+          "clarity": 90,
+          "completeness": 95,
+          "faithfulness": 90
+        },
+        "differences": "模型答案在參考答案的基礎上，額外說明了維生素A缺乏會導致角膜乾燥、角膜炎、結膜炎、角膜硬化、視網膜退化等視覺障礙，並提及及時補充維生素A以預防問題。這些補充資訊並未與參考答案衝突，而是提供了更完整的臨床表現與預防措施。",
+        "assessment": "答案正確且具備豐富的臨床細節，對於使用者了解山羊維生素A缺乏所致視力問題非常有幫助。雖然篇幅略長，但仍保持簡潔易懂，並且未偏離原始問題範圍。",
+        "overall_rating": 92
+      }
+    }
+  }
+]
