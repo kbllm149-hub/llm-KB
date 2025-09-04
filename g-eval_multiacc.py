@@ -90,16 +90,22 @@ MULTI_MODEL_SYSTEM_PROMPT = f"""
 最後必須從下列模型名稱中選出唯一優勝者（winner），名稱必須完全一致：
 {model_names_str}
 
-嚴格輸出格式要求：只輸出一段 JSON，格式如下：
+輸出只允許 JSON，格式如下：
 {{
-  "comparison": "指出所有回答的差異與優缺點",
-  "model_scores": {{
+  "total_comparison": "指出所有回答的差異與優缺點",
+"comparison": {{
+    "模型A": {{"優缺點說明"}},
+    "模型B": {{"優缺點說明"}},
+    "模型C": {{"優缺點說明"}},
+    ...
+  }},
+"model_scores": {{
     "模型A": {{ "correctness": <int 1-100> }},
     "模型B": {{ "correctness": <int 1-100> }},
     "模型C": {{ "correctness": <int 1-100> }},
     ...
   }},
-  "winner": ["模型X"]
+  "winner": "模型X"
 }}
 """
 
@@ -134,14 +140,20 @@ MULTI_MODEL_SYSTEM_WITH_STEPS_TEMPLATE = f"""
 {model_names_str}
 輸出只允許 JSON，格式如下：
 {{
-  "comparison": "指出所有回答的差異與優缺點",
-  "model_scores": {{
+  "total_comparison": "指出所有回答的差異與優缺點",
+"comparison": {{
+    "模型A": {{"優缺點說明"}},
+    "模型B": {{"優缺點說明"}},
+    "模型C": {{"優缺點說明"}},
+    ...
+  }},
+"model_scores": {{
     "模型A": {{ "correctness": <int 1-100> }},
     "模型B": {{ "correctness": <int 1-100> }},
     "模型C": {{ "correctness": <int 1-100> }},
     ...
   }},
-  "winner": ["模型X"]
+  "winner": "模型X"
 }}
 """
 
@@ -337,30 +349,40 @@ def main():
 
     # 存成列表，包含多次的結果
     with open("geval_ans_acc_results.csv", "w", newline="", encoding="utf-8-sig") as f:
-            writer = csv.writer(f)
+        writer = csv.writer(f)
 
-            # 只保留 system prompt 提到的評價標準
-            writer.writerow([
-                "run",
-                "model",
-                "comparison",
-                "correctness",
-                "winner"
-            ])
+        # 欄位標題
+        writer.writerow([
+            "run",
+            "model",
+            "correctness",
+            "comparison",
+            "total_comparison",
+            "winner"
+        ])
 
-            for run in all_runs:
-                run_idx = run["run"]
-                results = run["results"]
+        for run in all_runs:
+            run_idx = run["run"]
+            results = run["results"]
 
-                # multi-model 模式
-                if "multi_model" in results:
-                    winner = results["multi_model"].get("winner", "")
-                    # 嘗試取得每個模型的 correctness 分數
-                    model_scores = results["multi_model"].get("model_scores", {})
-                    for model_name, score_dict in model_scores.items():
-                        correctness = score_dict.get("correctness", "")
-                        comparison = results["multi_model"].get("comparison", "")
-                        writer.writerow([run_idx, model_name, comparison,correctness ,winner])
+            if "multi_model" in results:
+                winner = results["multi_model"].get("winner", "")
+                total_comparison = results["multi_model"].get("total_comparison", "")
+                model_scores = results["multi_model"].get("model_scores", {})
+                comparisons = results["multi_model"].get("comparison", {})
+
+                # 每個模型一列
+                for model_name in model_scores:
+                    correctness = model_scores[model_name].get("correctness", "")
+                    comparison = comparisons.get(model_name, "")
+                    writer.writerow([
+                        run_idx,
+                        model_name,
+                        correctness,
+                        comparison,
+                        total_comparison,
+                        winner
+                    ])
 
 if __name__ == "__main__":
     main()
